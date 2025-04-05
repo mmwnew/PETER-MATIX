@@ -61,7 +61,7 @@ async def next_page(bot, query):
     btn = [
         [
             InlineKeyboardButton(
-                text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'files#{file.file_id}'
+                text=f"[{get_size(file.file_size)}] {file.file_name}", url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}"
             ),
         ]
         for file in files
@@ -265,8 +265,14 @@ async def auto_filter(client, msg, spoll=False):
         return
 
     pre = 'file'
-    btn = [[InlineKeyboardButton(text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}')] for file in files]
-
+    btn = [
+        [
+            InlineKeyboardButton(
+                text=f"[{get_size(file.file_size)}] {file.file_name}", url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}"
+            ),
+        ]
+        for file in files
+    ]
     if total_results <= 8:
         btn.append([InlineKeyboardButton(text="🗓 1/1", callback_data="pages")])
     else:
