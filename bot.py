@@ -47,7 +47,7 @@ class Bot(Client):
         self.schedule = AsyncIOScheduler()
         self.schedule.start()
         temp.ME = me.id
-        temp.U_NAME = ""
+        temp.U_NAME = "Luka_filter_bot"
         temp.B_NAME = me.first_name
         self.username = '@' + me.username     
         if temp.REQ_CHANNEL1:  
